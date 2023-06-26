@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="px-2 text-lg">
+    <marquee class="py-2" scrollamount="15" onmouseover="this.stop()" onmouseout="this.start()"
+        ><h6 style="font-weight: bold">Welcome to ABDI UMKM. <b style="color: #b98c03">We are ready to serve you</b></h6></marquee
+    >
+</div>
+<div id="carouselExampleControls" class="carousel slide" style="transition: 2s" data-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-caption mt-1" style="text-align: center; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%)">
+            <h2 class="p-3 text-white" style="font-weight: bold">ABDI UMKM</h2>
+            <p>
+                Berbagai Macam Kebutuhan Rumah Tangga <br />
+                Menerima Segala Pesanan Anda Dengan <b style="color: #edb409">Penuh Senyum Sapa.</b>
+            </p>
+        </div>
+        <div style="filter: brightness(35%)">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="{{ url_for('static', filename='img/pasar 1.jpg') }}" alt="First slide" style="border-radius: 10px" />
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{{ url_for('static', filename='img/pasar 2.jpg') }}" alt="Second slide" style="border-radius: 10px" />
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{{ url_for('static', filename='img/pasar 3.jpg') }}" alt="Third slide" style="border-radius: 10px" />
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="{{ url_for('static', filename='img/pasar 4.jpg') }}" alt="Third slide" style="border-radius: 10px" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4 class="text-center pt-4"><b>CONTACT US</b></h4>
+<hr style="border-top: 7px solid #edb409; width: 25%; border-radius: 5px" />
+<div class="d-flex justify-content-center pt-1" style="gap: 12px">
+    <div class="contact">
+        <a href="https://wa.me/+6282135225610" target="_blank">
+            <img src="{{ url_for('static', filename='img/WhatsApp.png') }}" width="100%" alt="WhatsApp" />
+        </a>
+    </div>
+    <div class="contact">
+        <a href="http://maps.google.com?q=-7.807090,110.419829" target="_blank">
+            <img src="{{ url_for('static', filename='img/map.png') }}" width="90%" alt="WhatsApp" />
+        </a>
+    </div>
+
+    {% endblock %}
+</div>

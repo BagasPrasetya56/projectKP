@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% block content %}
+<h3>Perhitungan ECLAT</h3>
+<div class="formWrapper">
+    <form action="{{ url_for('eclatProcess') }}" , method="post">
+        <table>
+            <tr>
+                <td><label for="support">Masukkan jumlah minimal support (%)</label></td>
+                <td><input id="support" type="text" name="support" value="{{ supportPersen*100 }}" placeholder="Contoh: 50" required /></td>
+            </tr>
+            <tr>
+                <td><label for="MinKombinasi">Masukkan jumlah minimal kombinasi item</label></td>
+                <td><input id="MinKombinasi" type="text" name="MinKombinasi" value="{{ MinKombinasi_ }}" placeholder="Contoh: 2" required /></td>
+            </tr>
+            <tr>
+                <td><label for="MaxKombinasi">Masukkan jumlah maksimal kombinasi item</label></td>
+                <td><input id="MaxKombinasi" type="text" name="MaxKombinasi" value="{{ MaxKombinasi_ }}" placeholder="Contoh: 10" required /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit" class="btn btn-dark">Tampilkan</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<br />
+{% if(hasil_|length != 0) %}
+<h6>Aturan yang ditemukan dengan minimal support <b>{{ supportPersen*100 }}%</b>, kombinasi item minimal <b>{{ MinKombinasi_ }}</b> dan kombinasi item maksimal <b>{{ MaxKombinasi_ }}</b></h6>
+
+<div class="outer-wrapper">
+    <div class="tableWrapper-eclat">
+        <table class="table table-sort">
+            <thead>
+                <tr>
+                    <th class="tHead">No</th>
+                    <th class="tHead">Aturan</th>
+                    <th class="tHead">Support (%)</th>
+                    <th class="tHead">Support Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in hasil_ %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ i[0] }}</td>
+                    <td>{{ "%.2f"|format(i[1]*100)+'%' }}</td>
+                    <td>{{ i[2] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% else %}
+<br /><br />
+<h6 class="notFound">Aturan dengan minimal support <b>{{ supportPersen*100 }}%</b>, kombinasi item minimal <b>{{ MinKombinasi_ }}</b> dan kombinasi item maksimal <b>{{ MaxKombinasi_ }}</b> tidak ditemukan</h6>
+{% endif %} {% endblock %}

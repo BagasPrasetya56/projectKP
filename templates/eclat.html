@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+<h3>Perhitungan ECLAT</h3>
+<div class="formWrapper">
+    <form action="{{ url_for('eclatProcess') }}" , method="post">
+        <table>
+            <tr>
+                <td><label for="support">Masukkan jumlah minimal support (%)</label></td>
+                <td><input type="text" name="support" placeholder="Contoh: 50" required /></td>
+            </tr>
+            <tr>
+                <td><label for="MinKombinasi">Masukkan jumlah minimal kombinasi item</label></td>
+                <td><input type="text" name="MinKombinasi" placeholder="Contoh: 2" required /></td>
+            </tr>
+            <tr>
+                <td><label for="MaxKombinasi">Masukkan jumlah maksimal kombinasi item</label></td>
+                <td><input type="text" name="MaxKombinasi" placeholder="Contoh: 5" required /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit" class="btn btn-dark">Tampilkan</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock %}

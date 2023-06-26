@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block content %}
+<h3>Prediksi Jumlah Barang Menggunakan KNN</h3>
+<div class="formWrapper">
+    <form action="{{ url_for('knnProcess') }}" method="post">
+        <table>
+            <tr>
+                <td><label for="k">Masukkan Jumlah K</label></td>
+                <td><input type="text" name="k" id="k" placeholder="Contoh: 5" required /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit" name="prediksi" class="btn btn-dark">Prediksi</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock %}

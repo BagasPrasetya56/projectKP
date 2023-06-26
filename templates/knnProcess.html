@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block content %}
+<h3>Prediksi Jumlah Barang Menggunakan KNN</h3>
+<div class="formWrapper">
+    <form action="{{ url_for('knnProcess') }}" method="post">
+        <table>
+            <tr>
+                <td><label for="k">Masukkan Jumlah K</label></td>
+                <td><input type="text" name="k" id="k" value="{{ k }}" placeholder="Contoh: 50" required /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit" name="prediksi" class="btn btn-dark">Prediksi</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<br />
+<h6>Hasil prediksi menggunakan algoritma <i>K-Nearest Neighbors</i> dengan <b>k={{ k }}</b></h6>
+<div class="outer-wrapper">
+    <div class="tableWrapper-knn">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th rowspan="2">ID Produk</th>
+                    <th colspan="2" id="header1">Hari ke-4</th>
+                    <th colspan="2" id="header1">Hari ke-7</th>
+                    <th colspan="2" id="header1">Hari ke-10</th>
+                    <th colspan="2" id="header1">Hari ke-13</th>
+                </tr>
+                <tr>
+                    <th id="header2">Aktual</th>
+                    <th id="header2">Prediksi</th>
+                    <th id="header2">Aktual</th>
+                    <th id="header2">Prediksi</th>
+                    <th id="header2">Aktual</th>
+                    <th id="header2">Prediksi</th>
+                    <th id="header2">Aktual</th>
+                    <th id="header2">Prediksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in prediksi %}
+                <tr>
+                    {% for j in i %}
+                    <td>{{ j }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td></td>
+                    {% for a in akurasi %}
+                    <td colspan="2"><b>Akurasi : {{ a }}%</b></td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
